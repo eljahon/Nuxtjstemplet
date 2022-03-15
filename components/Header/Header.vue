@@ -1,20 +1,29 @@
 <template>
-  <div class="contenier">
-    <div class="hearer_menu">
-      <ul class="listUL" v-for="item in menu" :key="item">
-        <NuxtLink to="/" class="links">{{item}}</NuxtLink> </ul>
-      <span class="Contact">Contact</span>
-    </div>
+  <div> 
+      <header>
+      <img class="logo" :src="img" alt="this img yet">
+     <nav>
+        <ul class="nav_ul" >
+          <span v-for="item in menu" :key="item">
+            <NuxtLink class="nuxt_link" :to="item.link">{{item.name}}</NuxtLink>
+          </span>
+          
+        </ul>
+     </nav>
+      <a><button class="button_contact">Contact</button></a>
+      </header>
 
   </div>
 </template>
 
 <script>
+import imgLogo from '../../images/Group.svg'
 const listmenu  = require('../../constant/constant')
   export default {
     data () {
       return {
-        menu: listmenu.manuList
+        menu: listmenu.manuList,
+        img: imgLogo
       }
     },
     mounted () {
@@ -24,42 +33,48 @@ const listmenu  = require('../../constant/constant')
   }
 </script>
 
-<style lang="css" scoped>
-.links{
-  list-style-type:none;
+<style lang="scss" scoped>
+header {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.listUL {
-  list-style-type: none;
+.nuxt_link {
+  text-decoration: none;
+  display: flex;
+
+}
+.nuxt_link:hover {
+  border-bottom: 2px solid #fff;
+}
+.nav_ul {
   display: flex;
   gap: 20px;
-  padding: 15px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 24px;
-color: #fff;
-display: flex;
-justify-content:center;
 }
-.Contact {
+.button_contact{
   display: flex;
 flex-direction: row;
-justify-content: left;
+justify-content: center;
 align-items: center;
 padding: 22px 40px;
 
 position: absolute;
 left: 78.12%;
 right: 12.5%;
-top: 3.23%;
+top: 1.23%;
 bottom: 98.99%;
 
 /* Green_01 */
+border: none;
 
 background: #3DB079;
 border-radius: 8px;
-color: #fff;
 }
-
+.button_contact:hover{
+  color: blue;
+  margin-top: 2px;
+}
+.logo {
+  // margin-right: -30px;
+}
 </style>
